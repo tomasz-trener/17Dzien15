@@ -31,20 +31,7 @@
                 <ListView.ItemTemplate>
                     <DataTemplate>
 
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition></ColumnDefinition>
-                                <ColumnDefinition></ColumnDefinition>
-                            </Grid.ColumnDefinitions>
-
-                            <StackPanel Grid.Column="0">
-                                <Label Content="{Binding Title}" ></Label>
-                                <Label Content="{Binding Description}" ></Label>
-                            </StackPanel>
-                            <Image Grid.Column="1" Source="{Binding ImageUrl, Converter={StaticResource imageUrlToBitmapConv}}" Width="40" Height="40"></Image>
-                        </Grid>
-
-
+                        <uc:ProductControl Product="{Binding}" ></uc:ProductControl>
 
 
                     </DataTemplate>
