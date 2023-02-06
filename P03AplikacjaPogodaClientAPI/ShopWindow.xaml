@@ -15,6 +15,23 @@
     </Window.Resources>-->
     <Window.Resources>
         <converters:BitmapImageConverter x:Key="imageUrlToBitmapConv"/>
+        <converters:ScreenHeightToRangeConverter x:Key="screenConverter" />
+
+        <Style x:Key="TextBlockStyle" TargetType="TextBlock">
+            <Setter Property="FontSize" Value="32" />
+            <Style.Triggers>
+
+                <DataTrigger Binding="{Binding Source={x:Static SystemParameters.PrimaryScreenHeight}, Converter={StaticResource screenConverter}}" Value="1080" >
+                    <Setter Property="FontSize" Value="15"></Setter>
+                </DataTrigger>
+
+                <DataTrigger Binding="{Binding Source={x:Static SystemParameters.PrimaryScreenHeight}, Converter={StaticResource screenConverter}}" Value="1440" >
+                    <Setter Property="FontSize" Value="30"></Setter>
+                </DataTrigger>
+
+            </Style.Triggers>
+        </Style>
+        
     </Window.Resources>
 
     <DockPanel x:Name="shopPanel">
@@ -47,7 +64,7 @@
             </ListView>
 
             <StackPanel Grid.Column="1">
-                <TextBlock Text="Title"></TextBlock>
+                <TextBlock Style="{StaticResource TextBlockStyle}" Text="Title"></TextBlock>
                 <TextBox Text="{Binding SelectedProduct.Title, Mode=TwoWay}"></TextBox>
                 <TextBlock Text="Description"></TextBlock>
                 <TextBox Text="{Binding SelectedProduct.Description, Mode=TwoWay}"></TextBox>
