@@ -17,17 +17,24 @@
         <converters:BitmapImageConverter x:Key="imageUrlToBitmapConv"/>
     </Window.Resources>
 
-    <StackPanel x:Name="shopPanel">
-        <uc:HeaderControl></uc:HeaderControl>
-        <Button Content="Api test" x:Name="btnShopApiTest" Click="btnShopApiTest_Click"></Button>
+    <DockPanel x:Name="shopPanel">
+        <uc:HeaderControl DockPanel.Dock="Top"></uc:HeaderControl>
+        <Button DockPanel.Dock="Top" Content="Api test" x:Name="btnShopApiTest" Click="btnShopApiTest_Click"></Button>
 
-        <Grid>
+        <Grid DockPanel.Dock="Top">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition></ColumnDefinition>
                 <ColumnDefinition></ColumnDefinition>
             </Grid.ColumnDefinitions>
          
-            <ListView ItemsSource="{Binding Products}" SelectedItem="{Binding SelectedProduct}">
+            <ListView ScrollViewer.HorizontalScrollBarVisibility="Disabled" ItemsSource="{Binding Products}" SelectedItem="{Binding SelectedProduct}">
+
+                <ListView.ItemContainerStyle>
+                    <Style TargetType="ListViewItem">
+                        <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                    </Style>
+                </ListView.ItemContainerStyle>
+                
                 <ListView.ItemTemplate>
                     <DataTemplate>
 
@@ -58,5 +65,5 @@
         
     
     
-    </StackPanel>
+    </DockPanel>
 </Window>

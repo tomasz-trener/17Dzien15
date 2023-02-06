@@ -14,14 +14,20 @@
     
     <Grid Background="Aqua">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition></ColumnDefinition>
-            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="60"></ColumnDefinition>
         </Grid.ColumnDefinitions>
 
-        <StackPanel Grid.Column="0">
-            <Label x:Name="productTitle" Content="example product" ></Label>
-            <Label x:Name="productDescription" Content="example description" ></Label>
-        </StackPanel>
+        <Grid Grid.Column="0">
+            <Grid.RowDefinitions>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
+            
+            
+            <Label  x:Name="productTitle" Content="example product" ></Label>
+            <TextBlock Grid.Row="1" x:Name="productDescription" TextWrapping="Wrap" Text="example description" ></TextBlock>
+        </Grid>
         <Image  Grid.Column="1" Source="{Binding ImageUrl, Converter={StaticResource imageUrlToBitmapConv}}" Width="60" Height="60"></Image>
     </Grid>
 </UserControl>
