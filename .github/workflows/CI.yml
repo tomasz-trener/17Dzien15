@@ -1,0 +1,20 @@
+name: CI
+
+on:
+  pull_request:
+    branches: ["master"]
+    
+  workflow_dispatch:
+    
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Setup .NET Core SDK
+        uses: actions/setup-dotnet@v3.0.3
+        with:
+         dotnet-version: 6.0
+      - name: Restore dependences
+        run: dotnet restore Dzien17.sln
+      - name: build
+        run: dotnet build Dzien17.sln --no-restore 
