@@ -15,6 +15,6 @@ jobs:
         with:
          dotnet-version: 6.0
       - name: Restore dependences
-        run: dotnet restore Dzien17.sln
+        run: dotnet restore 
       - name: build
-        run: dotnet build Dzien17.sln --no-restore 
+        run: dotnet build --no-restore 
